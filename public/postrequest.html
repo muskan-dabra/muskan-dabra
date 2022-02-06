@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <link rel="icon"  href="/project/pics/smile.jpg">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <!-- <link href="css/PROFILESTYLE.CSS" rel="stylesheet"> -->
+    <title>Muskan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+ .not-ok{
+    background-color: red;
+    color: white;
+}
+.ok{
+    background-color: green;
+    color: black;
+}
+    </style>
+   <script src="js/jquery-1.8.2.min.js"> 
+   </script>
+    <script>
+      function doShowPrev(ref) 
+      {
+          var image = document.getElementById('prev');
+          image.src = URL.createObjectURL(ref.files[0]);
+      }
+      function doShowProof(ref) 
+      {
+          var image = document.getElementById('prev');
+          image.src = URL.createObjectURL(ref.files[0]);
+      }
+//    Regular Expressions 1 email id
+           $("#txtUid").blur(function(){  
+                   var r=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                   var Uid =$("#txtUid").val();
+                    if($("#txtUid").val()=="")
+                    {
+                        $("#txtUid").addClass("not-ok").removeClass("ok");
+                        $("#errUid").html("Fill Email Id plzzz.");
+                    }
+                    else if(r.test(Uid)==false)
+                    {
+                        $("#txtUid").addClass("not-ok").removeClass("ok");
+                        $("#errUid").html("must have @ and full stop");
+                    }
+                    else
+                    {
+                        $("#txtUid").addClass("ok").removeClass("not-ok");
+                        $("#errUid").html("Good");
+                    }
+                }); 
+ //     Regular Expressions 4 name
+                $("#txtName").blur(function(){   
+                  var r=/^[a-zA-Z]+$/;
+
+                   var Name =$("#txtName").val();
+                    if($("#txtName").val()=="")
+                    {
+                        $("#txtName").addClass("not-ok").removeClass("ok");
+                        $("#errName").html("Plz fill ur name.");
+                    }
+                    else if(r.test(Name)==false)
+                    {
+                        $("#txtName").addClass("not-ok").removeClass("ok");
+                        $("#errName").html("use alphabets only");
+                    }
+                    else
+                    {
+                        $("#txtName").addClass("ok").removeClass("not-ok");
+                        $("#errName").html("Good");
+                    }
+                }); 
+//       Regular Expressions 3 mob no
+           $("#txtMob").blur(function(){
+
+            var r=/^[6-9]{1}[0-9]{9}$/; //reg exp
+
+            var mob=$("#txtMob").val();
+
+               if($("#txtMob").val()=="")
+                {
+                    $("#txtMob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("plz fill");
+                }
+                else
+                if(r.test(mob)==false)
+                    {
+                        $("#txtMob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("enter correct number");
+                    }
+                else
+                {
+                    $("#txtMob").addClass("ok").removeClass("not-ok");
+                    $("#errMob").html("Good");
+                }
+           });
+//          Regular Expressions 4 address
+$("#txtAddress").blur(function(){
+
+var r=/^[0-9a-zA-Z]+$/; //reg exp
+
+var Address=$("#txtAddress").val();
+
+   if($("#txtAddress").val()=="")
+    {
+        $("#txtAddress").addClass("not-ok").removeClass("ok");
+        $("#errAddress").html("plz fill");
+    }
+    else
+    if(r.test(Address)==false)
+        {
+            $("#txtAddress").addClass("not-ok").removeClass("ok");
+        $("#errAddress").html("enter valid address");
+        }
+    else
+    {
+        $("#txtAddress").addClass("ok").removeClass("not-ok");
+        $("#errAddress").html("Good");
+    }
+});
+  </script>
+  </head>
+  <body>
+    <fieldset>
+    <div class="container bg-light">
+        <div class="row bg-warning " style="background-image: radial-gradient(rgb(230, 230, 84),rgb(199, 36, 199))">
+            <div class="col-md-12">
+      <center>
+    <h1><i>Post Request</i></h1>
+             </center>
+            </div>
+        </div>
+        <br>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<form class="row g-3" formaction="/profile-process-2" method="post" enctype="multipart/form-data"></form>
+    
+    <div class="mb-3">
+        <label for="txtUid" class="form-label">Email address</label>
+        <input type="text" class="form-control" id="txtUid" aria-describedby="emailHelp">
+        <div id="errUid">*</div>
+
+
+      </div>
+        
+    <div class="col-12">
+      <label for="txtName" class="form-label">Category</label>
+      <br>
+        <input list="validationServer" name="cat" id="m" class="form-control"aria-label="Default select example">
+       <datalist  id="validationServer">
+         <option >Plumber</option>
+         <option >Electrician</option>
+         <option >Carpenter</option>
+         <option>Welder</option>
+         <option>Maid</option>
+        <option>Painter</option>
+        <option>Labour</option>
+         </datalist>
+  
+        </div>
+
+    <div class="col-12">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">What</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="abc"></textarea>
+          </div>
+    </div>
+    
+    <div class="col-12">
+        <label for="upto" class="form-label">Up To</label>
+        <br>
+        <input type="date" id="upto" name="upto">
+    </div>
+<br>
+    <div class="d-flex bd-highlight mb-3 ">
+        <div class="me-auto p-2 bd-highlight">
+        <label for="cityid" class="form-label">Location-City</label>
+        <br>
+        <input list="validationServer04" name="city" id="cityid">
+       <datalist id="validationServer04">
+         <option selected disabled value="">Choose...</option>
+         <option value="Bathinda">Bathinda</option>
+         <option value="Muktsar">Muktsar</option>
+         <option value="Malout">Malout</option>
+         <option value="Abohar">Abohar</option>
+         <option value="Chandigarh">Chandigarh</option>
+         <option value="Patiala">Patiala</option>
+         <option value="New Delhi">New Delhi</option>  
+         <option value="Indore">Indore</option>  
+         <option value="Jaipur">Jaipur</option>  
+         <option value="Jodhpur">Jodhpur</option>  
+         <option value="Agra">Agra</option>
+         <option value="Mumbai">Mumbai</option>  
+         <option value="Shimla">Shimla</option>  
+         <option value="Lucknow">Lucknow</option>  
+         <option value="Amritsar">Amritsar</option> 
+       </datalist>
+
+     </div>
+     
+     <div class="p-2 bd-highlight">
+         <br>
+     <button class="btn btn-primary" value="Profile" type="submit" style="justify-content: center;">Post Request</button>
+  </div>  
+</div>
+    </div>
+</div>
+  </form>
+</fieldset>
+</body>
+</html>

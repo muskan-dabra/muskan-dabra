@@ -1,0 +1,39 @@
+#title
+{
+    width: 100%;
+    background-color: #cccccc;/* used for unavaliable image*/
+    background-image: linear-gradient(rgb(101, 224, 85),rgb(230, 227, 86),rgb(238, 83, 225));
+    height: 55px;
+    border: 1px solid blue;
+}
+
+#real-java
+{
+    color:white;
+    font-size: 27px;
+    margin-top: 5px;
+    margin-left: 15px;
+    float: left;
+    font-weight: bolder;
+    text-shadow:2px 2px rgb(245, 240, 240);
+    -webkit-text-stroke:1px rgb(1, 6, 14)
+}
+#img{
+    width: 80px; height: 80px;
+    background-image: url(/project/pics/userlogin.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.not-ok{
+    background-color: red;
+    color: white;
+}
+.ok{
+    background-color: green;
+    color: black;
+}

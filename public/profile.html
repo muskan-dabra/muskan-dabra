@@ -1,0 +1,237 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <link rel="icon"  href="/project/pics/smile.jpg">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <!-- <link href="css/PROFILESTYLE.CSS" rel="stylesheet"> -->
+    <title>Muskan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+ .not-ok{
+    background-color: red;
+    color: white;
+}
+.ok{
+    background-color: green;
+    color: black;
+}
+    </style>
+   <script src="js/jquery-1.8.2.min.js"> 
+   </script>
+    <script>
+      function doShowPrev(ref) 
+      {
+          var image = document.getElementById('prev');
+          image.src = URL.createObjectURL(ref.files[0]);
+      }
+      function doShowProof(ref) 
+      {
+          var image = document.getElementById('prev');
+          image.src = URL.createObjectURL(ref.files[0]);
+      }
+//    Regular Expressions 1 email id
+           $("#txtUid").blur(function(){  
+                   var r=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                   var Uid =$("#txtUid").val();
+                    if($("#txtUid").val()=="")
+                    {
+                        $("#txtUid").addClass("not-ok").removeClass("ok");
+                        $("#errUid").html("Fill Email Id plzzz.");
+                    }
+                    else if(r.test(Uid)==false)
+                    {
+                        $("#txtUid").addClass("not-ok").removeClass("ok");
+                        $("#errUid").html("must have @ and full stop");
+                    }
+                    else
+                    {
+                        $("#txtUid").addClass("ok").removeClass("not-ok");
+                        $("#errUid").html("Good");
+                    }
+                }); 
+ //     Regular Expressions 4 name
+                $("#txtName").blur(function(){   
+                  var r=/^[a-zA-Z]+$/;
+
+                   var Name =$("#txtName").val();
+                    if($("#txtName").val()=="")
+                    {
+                        $("#txtName").addClass("not-ok").removeClass("ok");
+                        $("#errName").html("Plz fill ur name.");
+                    }
+                    else if(r.test(Name)==false)
+                    {
+                        $("#txtName").addClass("not-ok").removeClass("ok");
+                        $("#errName").html("use alphabets only");
+                    }
+                    else
+                    {
+                        $("#txtName").addClass("ok").removeClass("not-ok");
+                        $("#errName").html("Good");
+                    }
+                }); 
+//       Regular Expressions 3 mob no
+           $("#txtMob").blur(function(){
+
+            var r=/^[6-9]{1}[0-9]{9}$/; //reg exp
+
+            var mob=$("#txtMob").val();
+
+               if($("#txtMob").val()=="")
+                {
+                    $("#txtMob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("plz fill");
+                }
+                else
+                if(r.test(mob)==false)
+                    {
+                        $("#txtMob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("enter correct number");
+                    }
+                else
+                {
+                    $("#txtMob").addClass("ok").removeClass("not-ok");
+                    $("#errMob").html("Good");
+                }
+           });
+//          Regular Expressions 4 address
+$("#txtAddress").blur(function(){
+
+var r=/^[0-9a-zA-Z]+$/; //reg exp
+
+var Address=$("#txtAddress").val();
+
+   if($("#txtAddress").val()=="")
+    {
+        $("#txtAddress").addClass("not-ok").removeClass("ok");
+        $("#errAddress").html("plz fill");
+    }
+    else
+    if(r.test(Address)==false)
+        {
+            $("#txtAddress").addClass("not-ok").removeClass("ok");
+        $("#errAddress").html("enter valid address");
+        }
+    else
+    {
+        $("#txtAddress").addClass("ok").removeClass("not-ok");
+        $("#errAddress").html("Good");
+    }
+});
+  </script>
+  </head>
+  <body>
+    <fieldset>
+    <div class="container bg-light">
+        <div class="row bg-warning " style="background-image: radial-gradient(rgb(230, 230, 84),rgb(199, 36, 199))">
+            <div class="col-md-12">
+      <center>
+    <h1><i>User Profile</i></h1>
+             </center>
+            </div>
+        </div>
+        <br>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+<form class="row g-3" formaction="/profile-process-2" method="post" enctype="multipart/form-data">
+  <div class="col-auto">
+    <label for="staticEmail2" class="visually-hidden">Email Id</label>
+    <input type="text" class="form-control-plaintext" id="staticEmail2" value="Email Id">
+  </div>
+  <div class="col-auto">
+    <input type="text" class="form-control" id="validationDefault01" required>
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Fetch</button>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="txtName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="validationDefault01" required>
+    </div>
+    <div class="col">
+      <label for="txtMob" class="form-label">Contact Number</label>
+      <input type="text" class="form-control" id="validationDefault01" required>
+    </div>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="validationDefault01" required>
+  </div>
+  
+  <div class="col-md-6">
+    <label for="validationServer04" class="form-label">City</label>
+    <input type="text" class="form-control" list="validationServer04" name="city" id="cityid" required>
+   <datalist id="validationServer04">
+     <option selected disabled value="">Choose...</option>
+     <option value="Bathinda">Bathinda</option>
+     <option value="Muktsar">Muktsar</option>
+     <option value="Malout">Malout</option>
+     <option value="Abohar">Abohar</option>
+     <option value="Chandigarh">Chandigarh</option>
+     <option value="Patiala">Patiala</option>
+     <option value="New Delhi">New Delhi</option>  
+     <option value="Indore">Indore</option>  
+     <option value="Jaipur">Jaipur</option>  
+     <option value="Jodhpur">Jodhpur</option>  
+     <option value="Agra">Agra</option>
+     <option value="Mumbai">Mumbai</option>  
+     <option value="Shimla">Shimla</option>  
+     <option value="Lucknow">Lucknow</option>  
+     <option value="Amritsar">Amritsar</option> 
+   </datalist>
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault04" class="form-label">State</label>
+    <input type="text" class="form-control" list="validationDefault04" name="state" id="stateid" required>
+    <datalist id="validationDefault04">
+      <option selected disabled value="">Choose...</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="West Bengal">West Bengal</option>
+    </datalist>
+  </div>
+  <div>
+    <label for="inputAddress" class="form-label">Profile Pic</label>
+<div class="input-group mb-3">
+    <input type="file" name="profilepic" class="form-control" id="inputGroupFile02" onchange="doShowPrev(this);">
+  </div>
+</div>
+<div>
+<img src="" alt="" id="prev" width="100" height="100">
+ </div>
+ <div class="container">
+ <div class="row justify-content-evenly">
+  <div class="col" style="margin-left: 20%;">
+    <button class="btn btn-primary" value="profile" type="submit">Save</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary" value="profile" type="submit">Update</button>
+  </div>
+  </div>
+</div>
+</form>    
+</fieldset>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head>
+    <link rel="icon"  href="/pics/smile.jpg">
+    <script src="js/angular.min.js"></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Muskan</title>
+      <script>
+          var mymodule=angular.module("myOwnModule",[]);
+          var myController=mymodule.controller("myController1",function($scope,$http)
+{
+     $scope.jsonAryCity;
+            $scope.doFetchAllCity=function()
+                {
+                    var url="/fetchCities";
+                      $http.get(url).then(smileFxGood,kituFxBad); 
+                      function smileFxGood(jsonResponse)
+                      {
+                         alert(JSON.stringify(jsonResponse.data));
+                          $scope.jsonAryCity=jsonResponse.data;
+                      }
+                      function kituFxBad(jsonResponse)
+                      {
+                          alert(JSON.stringify(jsonResponse.data));
+                      }
+                }
+          
+           //------------
+           
+           $scope.doFetchAll=function()
+            {
+                var url="/showAll";
+                      $http.get(url).then(smileFxGood,kituFxBad); 
+                      function smileFxGood(jsonResponse)
+                      {
+                         alert(JSON.stringify(jsonResponse.data));
+                          $scope.jsonAryall=jsonResponse.data;
+                      }
+                      function kituFxBad(jsonResponse)
+                      {
+                          alert(JSON.stringify(jsonResponse.data));
+                      }
+                }  
+ })
+      </script>
+</head>
+<!-- Here View is attached with controller -->
+<body ng-app="myOwnModule" ng-controller="myController1" ng-init="doFetchAllCity();"  style="background-image: linear-gradient(skyblue,rgb(250, 250, 192));"> </body> 
+     <!--   ng-init="doFetchAll();"-->
+     <h1><center>Citizen Records</center></h1>
+    
+       <center>
+           <p>
+            City:
+            <select >
+                <option  ng-repeat="obj in jsonAryCity" value={{obj.city}}> {{obj.city}} </option>
+                
+            </select>
+        </p>   
+        
+        <input type="button" value="Fetch All Records" ng-click="doFetchAll();">
+           <p>
+               <center>
+                All Records
+                <table border="1" width="400" style="border-color: hotpink;">
+                        <tr>
+                            <th>Sr. No</th>
+                            <th>Email id</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Pic Name</th>
+                            <th>pic preview</th>
+                        </tr> 
+                        <tr ng-repeat="obj in jsonAryall">
+                         <td>{{$index+1}}</td>
+                            <td>{{obj.txtpceid}}</td> 
+                            <td>{{obj.name}}</td> 
+                            <td>{{obj.mob}}</td>
+                            <td>{{obj.address}}</td> 
+                            <td>{{obj.city}}</td>
+                            <td>{{obj.state}}</td> 
+                            <td>{{obj.pp}}</td>
+                           <td align="center">
+                                    <img src="upload/{{obj.pp}}" width="50" height="50" alt="">
+                            </td>
+                              
+                     </tr>
+                </table>
+               </center>
+           </p>
+       </center>
+   
+</body>
+</html>

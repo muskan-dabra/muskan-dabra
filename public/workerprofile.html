@@ -1,0 +1,271 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <link rel="icon"  href="/pics/smile.jpg">
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <!-- <link href="css/PROFILESTYLE.CSS" rel="stylesheet"> -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <script src="js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script> 
+   <title>workerprofile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+ .not-ok{
+    background-color: red;
+    color: white;
+}
+.ok{
+    background-color: green;
+    color: black;
+}
+    </style>
+   <script src="js/jquery-1.8.2.min.js"> </script>
+    <script>
+      function doShowPrev(ref) 
+      {
+          var image = document.getElementById('prev');
+          image.src = URL.createObjectURL(ref.files[0]);
+      }
+      function doShowProof(ref) 
+      {
+          var image2 = document.getElementById('prev1');
+          image2.src = URL.createObjectURL(ref.files[0]);
+      }
+//    Regular Expressions 1 email id
+
+$(document).ready(function(){
+  $("#txtwpeid").keyup(function(){ 
+  
+                   var r=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                   var eid =$("#txtwpeid").val();
+                    if($("#txtwpeid").val()=="")
+                    {
+                        $("#txtwpeid").addClass("not-ok").removeClass("ok");
+                        $("#erreid").html("Fill Email Id plzzz.");
+                    }
+                    else if(r.test(eid)==false)
+                    {
+                        $("#txtwpeid").addClass("not-ok").removeClass("ok");
+                        $("#erreid").html("must have @ and full stop");
+                    }
+                    else
+                    {
+                        $("#txtwpeid").addClass("ok").removeClass("not-ok");
+                        $("#erreid").html("Good");
+                    }
+                });
+ //     Regular Expressions 4 name
+
+  $("#txtname").blur(function(){ 
+                  var r=/^[a-zA-Z]+$/;
+
+                   var Name =$("#txtname").val();
+                    if($("#txtname").val()=="")
+                    {
+                        $("#txtname").addClass("not-ok").removeClass("ok");
+                        $("#errName").html("Plz fill ur name.");
+                    }
+                    else if(r.test(Name)==false)
+                    {
+                        $("#txtname").addClass("not-ok").removeClass("ok");
+                        $("#errName").html("use alphabets only");
+                    }
+                    else
+                    {
+                        $("#txtname").addClass("ok").removeClass("not-ok");
+                        $("#errName").html("Good");
+                    }
+                }); 
+//       Regular Expressions 3 mob no
+
+$("#txtmob").blur(function(){
+
+            var r=/^[6-9]{1}[0-9]{9}$/; //reg exp
+
+            var mob=$("#txtmob").val();
+
+               if($("#txtmob").val()=="")
+                {
+                    $("#txtmob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("plz fill");
+                }
+                else
+                if(r.test(mob)==false)
+                    {
+                        $("#txtmob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("enter correct number");
+                    }
+                else
+                {
+                    $("#txtmob").addClass("ok").removeClass("not-ok");
+                    $("#errMob").html("Good");
+                }
+           });
+
+// Regular Expressions 4 address
+$("#txtaddress").blur(function(){
+
+ //reg exp
+var r=/^[#.0-9a-zA-Z\s,-]+$/;
+
+var Address=$("#txtaddress").val(); //var or let or const
+
+   if($("#txtaddress").val()=="")
+    {
+        $("#txtaddress").addClass("not-ok").removeClass("ok");
+        $("#errAddress").html("plz fill");
+    }
+    else
+    if(r.test(Address)==false)
+        {
+            $("#txtaddress").addClass("not-ok").removeClass("ok");
+        $("#errAddress").html("enter valid address");
+        }
+    else
+    {
+        $("#txtaddress").addClass("ok").removeClass("not-ok");
+        $("#errAddress").html("Good");
+    }
+});
+})
+
+  </script>
+  </head>
+  <body>
+    <fieldset>
+    <div class="container bg-light">
+        <div class="row bg-warning " style="background-image: radial-gradient(rgb(230, 230, 84),rgb(199, 36, 199))">
+            <div class="col-md-12">
+      <center>
+    <h1><i>Worker Profile</i></h1>
+             </center>
+            </div>
+        </div>
+        <br>
+   
+<form  class="row g-3" action="/submit" method="post" enctype="multipart/form-data">
+  
+  <div class="col-md-6">
+    <label for="txtwpeid" class="form-label">Email ID</label>
+    <input type="text" class="form-control" id="txtwpeid" name="txtwpeid" required>
+      <div id="erreid">*</div>
+    </td>
+  </tr>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="txtname" class="form-label">Name</label>
+      <input type="text" class="form-control" id="txtname" name="txtname" required>
+      <div id="errName">*</div>
+    </div>
+    <div class="col">
+      <label for="txtmob" class="form-label">Contact Number</label>
+      <input type="text" class="form-control" id="txtmob" name="txtmob" required>
+      <div id="errMob">*</div>
+    </div>
+    <div class="col">
+        <label for="validationServer04" class="form-label">City</label>
+        <input list="validationServer04" type="text" class="form-control" id="city" name="city" required>
+        <datalist id="validationServer04">
+            <option selected disabled value="">Choose...</option>
+            <option value="Bathinda">Bathinda</option>
+            <option value="Muktsar">Muktsar</option>
+            <option value="Malout">Malout</option>
+            <option value="Abohar">Abohar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Patiala">Patiala</option>
+            <option value="New Delhi">New Delhi</option>  
+            <option value="Indore">Indore</option>  
+            <option value="Jaipur">Jaipur</option>  
+            <option value="Jodhpur">Jodhpur</option>  
+            <option value="Agra">Agra</option>
+            <option value="Mumbai">Mumbai</option>  
+            <option value="Shimla">Shimla</option>  
+            <option value="Lucknow">Lucknow</option>  
+            <option value="Amritsar">Amritsar</option> 
+          </datalist>
+      </div>
+  </div>
+  <div class="col-12">
+    <label for="txtaddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="txtaddress" name="txtaddress" required>
+    <div id="errAddress">*</div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+    <label for="vallidationServer01" class="form-label">Category</label>
+    <br>
+    <input type="text" class="form-control" list="validationServer01" name="cat" id="cat" required>
+     <datalist  id="validationServer01">
+       <option >Plumber</option>
+       <option >Electrician</option>
+       <option >Carpenter</option>
+       <option>Welder</option>
+       <option>Maid</option>
+      <option>Painter</option>
+      <option>Labour</option>
+       </datalist>
+      </div>
+
+      <div class="col">
+        <label for="validationDefault04" class="form-label">Experience</label>
+        <br>
+        <input type="text" class="form-control" list="validationDefault04" name="x" id="x" required>
+         <datalist  id="validationDefault04">
+           <option>0-1 year</option>
+           <option>2 years</option>
+           <option>3 years</option>
+           <option>4 years</option>
+           <option>5 years or more</option>
+           </datalist>
+          </div>
+      
+      <div class="col">
+        <label for="shop" class="form-label">Firm/Shop</label>
+        <input type="text" class="form-control" id="shop" name="shop" required>
+      </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Work Done Detail</label>
+        <textarea class="form-control" id="work" name="work" rows="3"></textarea>
+      </div>
+  
+      <div class="row">
+        <div class="col">
+    <label for="inputAddress" class="form-label">Profile Pic</label>
+<div class="input-group mb-6">
+    <input type="file" name="profilepic" class="form-control" id="profilepic" onchange="doShowPrev(this);">
+  </div>
+  <br>
+<div>
+<img src="" alt="" id="prev" width="100" height="100">
+ </div>
+</div>
+
+<div class="col">
+ <label for="inputAddress" class="form-label">Id Proof</label>
+ <div class="input-group mb-6">
+     <input type="file" name="idpic" class="form-control" id="idpic" onchange="doShowProof(this);">
+   </div>
+   <br>
+ <div>
+ <img src="" alt="" id="prev1" width="100" height="100">
+  </div>
+</div>
+</div>
+     <center>
+    <button class="btn btn-primary" value="profile" type="submit">Submit</button>
+  </center>
+</div>
+</form>    
+</fieldset>
+</body>
+</html>

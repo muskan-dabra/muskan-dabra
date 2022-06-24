@@ -1,0 +1,481 @@
+# muskan-dabra
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon"  href="/pics/smile.jpg">
+    <!-- FOR CORRECT MOBILE VIEW-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <title>Smile</title>
+  <link rel="stylesheet" href="css/dabrastyle.css"> 
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="js/jquery-1.8.2.min.js"> </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="/public/css/semantic.css">
+
+      <script>
+
+  $(document).ready(function()
+   {
+  $("#txtUid").keyup(function(){  
+                   var r=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                   var Uid =$("#txtUid").val();
+                    if($("#txtUid").val()=="")
+                    {
+                        $("#txtUid").addClass("not-ok").removeClass("ok");
+                        $("#errUid").html("Plz Fill Password");
+                    }
+                    else if(r.test(Uid)==false)
+                    {
+                        $("#txtUid").addClass("not-ok").removeClass("ok");
+                        $("#errUid").html("must have @ and full stop");
+                    }
+                    else
+                    {
+                        $("#txtUid").addClass("ok").removeClass("not-ok");
+                        $("#errUid").html("Good");
+                    }
+                  }); 
+    
+                  //  mob  Regular Expressions 
+           $("#txtMob").blur(function(){
+
+            var r=/^[6-9]{1}[0-9]{9}$/; //reg exp
+
+            var mob=$("#txtMob").val();
+
+               if($("#txtMob").val()=="")
+                {
+                    $("#txtMob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("plz fill");
+                }
+                else
+                if(r.test(mob)==false)
+                    {
+                        $("#txtMob").addClass("not-ok").removeClass("ok");
+                    $("#errMob").html("enter correct number");
+                    }
+                else
+                {
+                    $("#txtMob").addClass("ok").removeClass("not-ok");
+                    $("#errMob").html("Good");
+                }
+           });
+
+           // pwd regular expression
+           $("#txtPwd").blur(function(){
+            var pwd=$("#txtPwd").val();
+            var r=/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+
+            if($("#txtPwd").val()=="")
+                {
+                    $("#txtPwd").addClass("not-ok").removeClass("ok");
+                    $("#errPwd").html("Plz Fill Password");
+                  }
+                else
+                if(r.test(pwd)==false)
+                {
+                    $("#txtPwd").addClass("not-ok").removeClass("ok");
+                    $("#errPwd").html("must have capital alphabet,digits and special symbol");
+                  }
+                else
+               {                
+                $("#txtPwd").addClass("ok").removeClass("not-ok");
+                $("#errPwd").html("Good"); 
+              } 
+           });
+
+           $("#btnSignup").click(function () {
+        
+        var email=$("#txtUid").val(); //#id
+        var pwd=$("#txtPwd").val();
+        var contact=$("#txtMob").val();
+        var type=$("#type").val();
+        var urlWithData="/signup-process?email="+email+"&pwd="+pwd+"&contact="+contact+"&type="+type; //&name
+
+        // alert(urlWithData);
+        
+        $.get(urlWithData,function(response){
+          alert(JSON.stringify(response));
+
+
+       // $("#txtPwd").val(response[0].pwd);//pwd: col. name in mysql table
+        // $("#prev").prop("src","uploads/"+response[0].picpath);
+        // $("#jasoos").val(response[0].picpath);
+
+        });
+
+        // $("#signup").on("hidden.modal",function(){
+        //   $(this).find("form").trigger("reset");
+        //   $("#signup").remove();
+        // });
+      });
+     
+          });
+           
+           $(document).ready(function()
+ {
+  $("#txtlid").blur(function(){  
+                   var r=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                   var lid =$("#txtlid").val();
+                    if($("#txtlid").val()=="")
+                    {
+                        $("#txtlid").addClass("not-ok").removeClass("ok");
+                        $("#errlid").html("Plz Fill Password");
+                    }
+                    else if(r.test(lid)==false)
+                    {
+                        $("#txtlid").addClass("not-ok").removeClass("ok");
+                        $("#errlid").html("must have @ and full stop");
+                    }
+                    else
+                    {
+                        $("#txtlid").addClass("ok").removeClass("not-ok");
+                        $("#errlid").html("Good");
+                    }
+                }); 
+ // pwd regular expression
+ $("#txtlPwd").blur(function(){
+            var lpwd=$("#txtlPwd").val();
+            var r=/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+
+            if($("#txtlPwd").val()=="")
+                {
+                    $("#txtlPwd").addClass("not-ok").removeClass("ok");
+                    $("#errlPwd").html("Plz Fill Password");
+                  }
+                else
+                if(r.test(lpwd)==false)
+                {
+                    $("#txtlPwd").addClass("not-ok").removeClass("ok");
+                    $("#errlPwd").html("must have capital alphabet,digits and special symbol");
+                  }
+                else
+               {
+                $("#txtlPwd").addClass("ok").removeClass("not-ok");
+                $("#errlPwd").html("Good"); 
+              } 
+           });
+
+              
+              $("#btnlogin").click(function () 
+      {
+     // alert();
+        var a = $("txtlid").val();
+        var b = $("txtlPwd").val();
+        var urlWithData = "/login?a=" + $("#txtlid").val()+"&b=" + $("#txtlPwd").val();
+        $.get(urlWithData, function (response) {
+          //alert(JSON.stringify(response));
+            if(response.length==0)
+            alert("Invalid uid/password");
+            else if(response[0].type=="citizen")
+            {
+             // window.localStorage.setItem("x",$("#txtlid").val()); //for show welcome username in shows in dashcitizen or dashworker
+            //  localStorage.setItem("x",txtlid);
+              //alert(localStorage.getItem("x"));
+                window.location.href = "dashcitizen.html";
+               //   window.location.replace('/dashcitizen.html');
+            }
+            else if(response[0].type=="worker")
+            {
+             // window.localStorage.setItem("x",$("#txtlid").val()); //for show welcome username in shows in dashcitizen or dashworker
+             window.location.href = "dashworker.html";
+            // localStorage.setItem("x",txtlid);
+              //alert(localStorage.getItem("x"));
+            // window.location.replace('/dashworker.html');
+            }     
+        });
+      });
+    });
+             </script>
+     <style>
+      .not-ok{
+     background-color: rgb(230, 41, 41);
+     color: white;
+ }
+ .ok{
+     background-color: rgb(97, 228, 97);
+     color: black;
+ }
+ a{
+   background-repeat: none;
+   text-shadow: black;
+ }
+#color{
+  background-image: radial-gradient(white,rgb(199, 36, 199));
+}
+
+
+    </style>
+  </head>
+  <body>
+
+<div class="container">
+<nav class="navbar navbar-expand-lg bg-light" >
+  <div class="container-fluid" id="color">
+    <img src="/pics/smile.jpg" alt="" width="35" height="30" class="d-inline-block align-text-top" style="border-radius: 50%;">
+    <a class="navbar-brand" href="#">
+     
+      <h2 id="real-java">www.smile.com</h2></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-grid gap-2 d-md-block"  style="margin:auto; align-items: flex-end;" >
+          
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signupModal"  > Signup</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal"> Login</button>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/pics/images.png" class="d-block w-100" alt="..." height="580px">
+    </div>
+    <div class="carousel-item">
+      <img src="/pics/Medical-Social-Worker.jpg" class="d-block w-100" alt="..." height="580px">
+    </div>
+    <div class="carousel-item">
+      <img src="/pics/technicians-people-group-engineering-worker-construction_180264-20.jpg" class="d-block w-100" alt="..." height="580px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+         
+
+<br>
+<div class="nav justify-content-center" id="color" >
+   <h2>Our Services</h2>
+  </div>
+
+
+<div class="row  row-cols-1 row-cols-md-3 g-4">
+<div class="col">
+  <div class="card h-100">
+    <div>
+    <img class="card-img-top" src="/pics/r.jpg" class="rounded-circle" alt="Profile" style="border-radius: 50%;" >
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Post Request</h5>
+      <p class="card-text">The Post Request method requests that a web server accept the data enclosed in the body of the request message.</p>  
+        <center>
+        <a class="btn btn-outline-primary" href="postrequest.html">Post Request</a>
+        </center>
+</div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card h-100">
+    <div>
+      <br>
+    <img class="card-img-top" src="/pics/workers2.jpg" class="rounded-circle" alt="Find" style="border-radius:50%;width: 90%;height: 100%;margin-left: 5%;margin-top: 5%;margin-bottom: 2%;">
+    </div>
+    <br>
+    <div class="card-body">
+      <h5 class="card-title">Find Work</h5>
+    <p class="card-text">The part of an organization's website used for finding names, phone numbers, and email addresses of its employees. </p>
+        <center>
+        
+        <a href="findwork.html" class="btn btn-outline-primary">Find Work</a>
+        </center>
+</div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="card h-100">
+    <div>
+    
+    <img class="card-img-top" src="/pics/o.jpg" class="rounded-circle" alt="Cinque Terre" style="border-radius:50%; margin-top: 7%;">
+       
+     
+  </div>
+    <div class="card-body">
+      <h5 class="card-title">Find Worker</h5>
+        <p class="card-text"> a person or thing that works, usually at a specific job a good worker, a research worker.</p>
+        <center>
+          <a href="workerfinder.html" class="btn btn-outline-primary">Find Worker</a>
+        </center>
+</div>
+</div>
+</div>
+</div>
+
+
+<br>
+  <div class="nav justify-content-center" id="color">
+   <h2> Reach Us </h2>
+  </div>
+
+
+  <div class="row mt-3">
+    <div class="col" style="width: 500; height: 300;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.8807337916082!2d74.95013941381208!3d30.211951281821708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732a4f07278a9%3A0x4a0d6293513f98ce!2sBanglore%20Computer%20Education%20(C%20C%2B%2B%20Android%20J2EE%20PHP%20Python%20AngularJs%20Spring%20Java%20Training%20Institute)!5e0!3m2!1sen!2sin!4v1645008540325!5m2!1sen!2sin" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
+  </div>
+    <div class="col"  width="500" height="300">
+    
+    <a href="https://www.facebook.com">
+      <img alt="" src="/pics/fb.jpg" width="500" height="300">
+   </a>
+  </div>
+  </div>
+
+
+  <br>
+  <div class="nav justify-content-center" id="color">
+    <h2>About Us </h2>
+   </div>
+ 
+ <div class="container">
+  <div class="row mt-3">
+    <div class="col" >
+    <!--img src="/pics/profileg.jpg" style="width: 500; height: 300;"-->
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="/pics/WhatsApp Image 2022-06-13 at 9.25.52 PM.jpeg" class="img-fluid"  alt="..." height="50px" >
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Designed By <br> Muskan</h5>
+            <p class="card-text"> <i  class="fa">&#xf095;</i> 78927-85461 <br> <i  class="fa">&#xf003;</i> muskan2001@gmail.com  </p> 
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col"  >
+      <!--img alt="" src="/pics/fb.jpg" width="500" height="300"-->
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="/pics/WhatsApp Image 2022-06-11 at 12.57.35 PM.jpeg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Under the guidance of <br> Rajesh Bansal</h5>
+              <p class="card-text"> 
+              <i  class="fa">&#xf095;</i>  98722-46056<br> <i  class="fa">&#xf003;</i> bcebti@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+  </div>
+  </div>
+  </div>
+  <hr>
+  
+<center>
+  <p> &copy;  Copyright reserved  </p>
+</center>
+<br>
+
+
+ <!-- SIGNUP MODAL -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning" >
+        <h5 class="modal-title " id="exampleModalLabel" id="ts">SignUp Here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form >
+      <div class="modal-body">
+        <div id="img" >
+        </div>
+              <div class="mb-3">
+                
+                <label for="txtUid" class="form-label">Email ID</label>
+                <input id="txtUid" type="email" class="form-control" placeholder="name@example.com" name="email" required>
+              <!--
+                <span id="errUid">we will keep ur id safe</span>
+              -->
+                <div id="errUid">*</div>
+              </div>
+              <div class="mb-3">
+                  <label for="txtPwd" class="form-label">Password</label>
+                <input type="password" class="form-control" id="txtPwd" name="pwd" placeholder="password">
+                <div id="errPwd">*</div> 
+                </div>
+                <div class="mb-3">
+                  <label for="txtMob" class="form-label">Mobile</label>
+                <input type="text" class="form-control" id="txtMob" name="contact">
+                <div id="errMob">*</div> 
+                </div>
+
+ <div class="mb-3">
+  <label for="type" class="form-label">User Type</label>
+<select class="form-select" name="type" id="type"   aria-label="Default select example">
+  <option selected disabled value="">Choose...</option>
+  <option value="worker">Worker</option>
+  <option value="citizen">Citizen</option>
+</select>
+</div>
+          </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-outline-primary" id="btnSignup" >Signup</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-warning" >
+          <h5 class="modal-title " id="exampleModalLabel">Login Here</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+<form>
+        <div class="modal-body">
+              <div class="mb-3">
+                <label for="txtlid" class="form-label">Email ID</label>
+                <input id="txtlid" type="text" class="form-control" name="txtlid">
+              <div id="errlid">*</div>
+              </div>
+              <div class="mb-3">
+                  <label for="txtlPwd" class="form-label">Password</label>
+                <input type="password" class="form-control" id="txtlPwd" name="txtlPwd">
+                <div id="errlPwd">*</div> 
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" formaction="/login" class="btn btn-outline-primary" id="btnlogin" >Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </body>
+  </html>

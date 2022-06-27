@@ -20,7 +20,7 @@
 }
 #img{
     width: 80px; height: 80px;
-    background-image: url(/project/pics/userlogin.png);
+    background-image: url(./pics/userlogin.png);
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;

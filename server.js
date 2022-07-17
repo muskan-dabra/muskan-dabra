@@ -9,12 +9,11 @@ const e=require("express");
 const req=require("express/lib/request");
 const { info } = require("console");
 var app=express();
-const port = process.env.PORT||6070;
-
-app.listen(port,function(){
-    console.log(`Server Started at ${port} and ready for listening requests from Client-chrome`);
+const port = process.env.PORT || 3338;
+// ...
+server.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}/`);
 });
-
 app.use(express.static("public"));
 const urlencodedparser= express.urlencoded({'extended':false});
 app.use(express.json());
